@@ -9,8 +9,11 @@ import * as path from "path";
 //利用url获取文件的后缀，去掉JSON数据后的字符串
 import * as url from "url";
 
+import * as cors from "cors";
+
 http
   .createServer(function (request, response) {
+    response.setHeader("Access-Control-Allow-Origin", "*");
     let pathname = url.parse(request.url).pathname;
     pathname = pathname === "/" ? "/index.html" : pathname;
     let extname = path.extname(pathname);
